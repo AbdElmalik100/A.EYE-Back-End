@@ -35,7 +35,8 @@ class CustomUser(AbstractUser):
     last_name = models.CharField(max_length=255)
     email = models.EmailField(max_length=255, unique=True)
     phone_number = models.CharField(max_length=15, blank=True, null=True)
-    avatar = models.ImageField(upload_to='users_avatar', blank=True, null=True, default=None)
+    # avatar = models.ImageField(upload_to='users_avatar', blank=True, null=True, default=None)
+    avatar = models.CharField(max_length = 255, blank=True, null=True, default=None)
 
     objects = UserManager()
 
