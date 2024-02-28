@@ -43,8 +43,6 @@ class CustomUser(AbstractUser):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['type', 'first_name', 'last_name', 'username']
 
-    # def save(self, *args, **kwargs):
-    #     super(CustomUser, self).save(*args, **kwargs)
 
 
 class PatientProfile(models.Model):

@@ -139,8 +139,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'verceldb',
         'USER': 'default',
-        'PASSWORD': 'BIb3M0CGoAcV',
-        'HOST': 'ep-purple-moon-a43fwmzb-pooler.us-east-1.aws.neon.tech',
+        'PASSWORD': '2Z9CPrMovGda',
+        'HOST': 'ep-square-fog-a4wukmmz-pooler.us-east-1.aws.neon.tech',
         'PORT': '5432',
     }
 }
