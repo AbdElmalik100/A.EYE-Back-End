@@ -46,15 +46,19 @@ class CustomUser(AbstractUser):
 
 
 class PatientProfile(models.Model):
-    user = models.OneToOneField(CustomUser, on_delete = models.CASCADE)
+    user = models.OneToOneField(CustomUser, on_delete = models.CASCADE, related_name='patient_profile')
 
     def __str__(self):
         return self.user.username
     
 
 class DoctorProfile(models.Model):
-    user = models.OneToOneField(CustomUser, on_delete = models.CASCADE)
-    
+    user = models.OneToOneField(CustomUser, on_delete = models.CASCADE, related_name='doctor_profile')
+    # specialization = models.CharField(max_length = 255, blank=True, null=True)
+    # clinic_address = models.CharField(max_length = 255, blank=True, null=True)
+    # license_number = models.CharField(max_length = 255, blank=True, null=True)
+
+
     def __str__(self):
         return self.user.username
 

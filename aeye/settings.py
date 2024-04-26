@@ -75,8 +75,6 @@ REST_FRAMEWORK = {
 }
 
 
-
-
 DJOSER = {
     'PASSWORD_RESET_CONFIRM_URL': '/password/reset/confirm/{uid}/{token}',
     'USERNAME_RESET_CONFIRM_URL': '/email/reset/confirm/{uid}/{token}',
@@ -87,17 +85,14 @@ DJOSER = {
     'SET_PASSWORD_RETYPE': True,
     'PASSWORD_RESET_CONFIRM_RETYPE': True,
     'USER_CREATE_PASSWORD_RETYPE': True,
-    # 'PASSWORD_RESET_SHOW_EMAIL_NOT_FOUND': True,
+
     'SERIALIZERS': {
         'user': 'accountsapp.serializers.CustomUserSerializer',
         'current_user': 'accountsapp.serializers.CustomUserSerializer',
-        # 'user_create': 'djoser.serializers.UserCreateSerializer',
-    },
-    'ACTIVATION': {
-        # Auto-login the user after activation
-        'auto_login': True,
-    },
+    }
 }
+
+
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
