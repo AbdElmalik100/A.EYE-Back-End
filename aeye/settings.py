@@ -122,24 +122,24 @@ WSGI_APPLICATION = 'aeye.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 # SQLite 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
-# For Postgres on vercel 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'verceldb',
-        'USER': 'default',
-        'PASSWORD': '2Z9CPrMovGda',
-        'HOST': 'ep-square-fog-a4wukmmz-pooler.us-east-1.aws.neon.tech',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# For Postgres on vercel 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'verceldb',
+#         'USER': 'default',
+#         'PASSWORD': '2Z9CPrMovGda',
+#         'HOST': 'ep-square-fog-a4wukmmz-pooler.us-east-1.aws.neon.tech',
+#         'PORT': '5432',
+#     }
+# }
 
 
 # Password validation

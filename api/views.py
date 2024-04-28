@@ -4,9 +4,11 @@ from .models import *
 from .serializers import *
 import joblib
 import pickle
-
+import torch
 # Create your views here.
 
+model = joblib.load('Diabetic Detection.pkl')
+print("Model Initialized!")
 
 
 class PatientsViewSet(viewsets.ModelViewSet):
@@ -28,9 +30,9 @@ class PatientDetectionResultsViewSet(viewsets.ModelViewSet):
         print(image_url)
 
 
-        # model = pickle.load(open('blindness_detection_model.pkl', 'rb'))
-        model = joblib.load('blindness_detection_model (4).pkl')
-        print(model)
+        # model = joblib.load('blindness_detection_model.pkl')
+        # model = torch.load('checkpoint.pth', map_location=torch.device('cpu'))
+        print(dir(model))
 
         # detectionInstance.test(image_url)
     

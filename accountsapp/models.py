@@ -41,7 +41,7 @@ class CustomUser(AbstractUser):
     objects = UserManager()
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['type', 'first_name', 'last_name', 'username']
+    REQUIRED_FIELDS = ['type', 'first_name', 'last_name', 'username', 'is_superuser']
 
 
 
