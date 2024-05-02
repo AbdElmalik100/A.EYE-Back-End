@@ -34,7 +34,7 @@ class DoctorDetectionResults(models.Model):
 class PatientDetectionResults(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField( auto_now=True)
-    result = models.CharField(max_length=255)
+    result = models.CharField(max_length=255, blank=True, null=True)
     image = models.ImageField(upload_to='detected_image', blank=True, null=True, default=None)
     # image = models.CharField(max_length = 255, blank=True, null=True, default=None)
     patient = models.ForeignKey(PatientProfile, on_delete = models.CASCADE, related_name = 'patient_detections')
