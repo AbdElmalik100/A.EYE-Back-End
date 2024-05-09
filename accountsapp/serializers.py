@@ -14,6 +14,7 @@ class PatientProfileSerializer(serializers.ModelSerializer):
 
 class DoctorProfileSerializer(serializers.ModelSerializer):
     # user = CustomUserSerializer(read_only = True)
+    patients_doctor = PatientsSerializer(many = True, read_only = True)
     class Meta:
         model = DoctorProfile
         fields = '__all__'

@@ -131,7 +131,7 @@ WSGI_APPLICATION = 'aeye.wsgi.application'
 #     }
 # }
 
-# For Postgres on vercel 
+# # For Postgres on vercel 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
