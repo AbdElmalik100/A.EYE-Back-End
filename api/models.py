@@ -14,7 +14,7 @@ class Contact(models.Model):
     updated_at = models.DateTimeField( auto_now=True)
     full_name = models.CharField(max_length=255)
     email = models.EmailField(max_length=255)
-    phone_number = models.EmailField(max_length=15)
+    phone_number = models.CharField(max_length=15)
     message = models.TextField()
 
 class Patients(models.Model):
