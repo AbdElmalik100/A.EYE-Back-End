@@ -2,6 +2,11 @@ from rest_framework import serializers
 from .models import *
 
 
+class ContactSerialzer(serializers.ModelSerializer):
+    class Meta:
+        model = Contact
+        fields = '__all__'
+
 class DoctorDetectionResultsSerialzer(serializers.ModelSerializer):
     class Meta:
         model = DoctorDetectionResults

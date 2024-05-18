@@ -8,6 +8,15 @@ GENDER = [
     ('female', 'Female'),
 ]
 
+
+class Contact(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField( auto_now=True)
+    full_name = models.CharField(max_length=255)
+    email = models.EmailField(max_length=255)
+    phone_number = models.EmailField(max_length=15)
+    message = models.TextField()
+
 class Patients(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField( auto_now=True)
@@ -34,7 +43,7 @@ class DoctorDetectionResults(models.Model):
     result = models.CharField(max_length=255, blank=True, null=True)
     result_class = models.IntegerField(blank=True, null=True)
     description = models.TextField(blank=True, null=True)
-    points = models.CharField(max_length=255, blank=True, null=True)
+    points = models.CharField(max_length=1000, blank=True, null=True)
     patient = models.ForeignKey(Patients, on_delete = models.CASCADE, related_name = 'doctor_patients_detections', blank=True, null=True)
 
 
@@ -45,6 +54,6 @@ class PatientDetectionResults(models.Model):
     result_class = models.IntegerField(blank=True, null=True)
     result = models.CharField(max_length=255, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
-    points = models.CharField(max_length=255, blank=True, null=True)
+    points = models.CharField(max_length=1000, blank=True, null=True)
     patient = models.ForeignKey(PatientProfile, on_delete = models.CASCADE, related_name = 'patient_detections')
 

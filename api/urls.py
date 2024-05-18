@@ -4,6 +4,7 @@ from .views import *
 
 
 router = DefaultRouter()
+router.register("contact", ContactViewSet)
 router.register("patients", PatientsViewSet)
 router.register("doctor-detection", DoctorDetectionResultsViewSet)
 router.register("patient-detection", PatientDetectionResultsViewSet)

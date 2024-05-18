@@ -8,10 +8,16 @@ from torchvision import transforms
 from .filters import *
 # Create your views here.
 
+
 model = torch.load('DR_Detection.pth', map_location=torch.device('cpu'))
 print("Model Initialized!")
 
 
+
+
+class ContactViewSet(viewsets.ModelViewSet):
+    queryset = Contact.objects.all()
+    serializer_class = ContactSerialzer
 
 class PatientsViewSet(viewsets.ModelViewSet):
     queryset = Patients.objects.all()
@@ -60,17 +66,19 @@ class DoctorDetectionResultsViewSet(viewsets.ModelViewSet):
     def detection(self, imageUrl, *args, **kwargs):
         image = Image.open(imageUrl)
         image = image.convert('RGB')
-        preprocess = transforms.Compose([transforms.Resize([1024, 1024]),
+        preprocess = transforms.Compose([transforms.Resize([512, 512]),
                                             transforms.ToTensor(),
-                                            transforms.Normalize((0.485, 0.456, 0.406), (0.229, 0.224, 0.225))])
+                                            transforms.Normalize((0.485, 0.456, 0.406), (0.229, 0.224, 0.225)),
+                                            transforms.RandomRotation(30)])
         image_tensor = preprocess(image)
         if len(image_tensor.shape) == 3:
             image_tensor= image_tensor.unsqueeze(0)
         model.eval()
-
-        outputs= model(image_tensor.to('cpu')) 
-        probabilities= torch.softmax(outputs,dim=1)
-        predictions = probabilities.argmax(dim=1).cpu().detach().tolist() #Predicted labels for an image batch.
+        with torch.no_grad():
+            for batch,x in enumerate(image_tensor):
+                outputs= model(image_tensor.to('cpu')) 
+                probabilities= torch.softmax(outputs,dim=1)
+                predictions = probabilities.argmax(dim=1).cpu().detach().tolist() #Predicted labels for an image batch.
         return predictions
 
 
@@ -117,16 +125,17 @@ class PatientDetectionResultsViewSet(viewsets.ModelViewSet):
     def detection(self, imageUrl, *args, **kwargs):
         image = Image.open(imageUrl)
         image = image.convert('RGB')
-        preprocess = transforms.Compose([transforms.Resize([1024,1024]),
+        preprocess = transforms.Compose([transforms.Resize([512,512]),
                                             transforms.ToTensor(),
-                                            transforms.Normalize((0.485, 0.456, 0.406), (0.229, 0.224, 0.225))])
+                                            transforms.Normalize((0.485, 0.456, 0.406), (0.229, 0.224, 0.225)),
+                                            transforms.RandomRotation(30)])
         image_tensor = preprocess(image)
         if len(image_tensor.shape) == 3:
             image_tensor= image_tensor.unsqueeze(0)
         model.eval()
         with torch.no_grad():
-                for batch,x in enumerate(image_tensor):
-                    outputs= model(image_tensor.to('cpu')) 
-                    probabilities= torch.softmax(outputs,dim=1)
-                    predictions = probabilities.argmax(dim=1).cpu().detach().tolist() #Predicted labels for an image batch.
+            for batch,x in enumerate(image_tensor):
+                outputs = model(image_tensor.to('cpu')) 
+                probabilities = torch.softmax(outputs,dim=1)
+                predictions = probabilities.argmax(dim=1).cpu().detach().tolist() #Predicted labels for an image batch.
         return predictions
