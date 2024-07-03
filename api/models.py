@@ -43,6 +43,8 @@ class DoctorDetectionResults(models.Model):
     result_class = models.IntegerField(blank=True, null=True)
     description = models.TextField(blank=True, null=True)
     points = models.CharField(max_length=1000, blank=True, null=True)
+    description_arabic = models.TextField(blank=True, null=True)
+    points_arabic = models.CharField(max_length=1000, blank=True, null=True)
     patient = models.ForeignKey(Patients, on_delete = models.CASCADE, related_name = 'doctor_patients_detections', blank=True, null=True)
 
 
@@ -54,5 +56,8 @@ class PatientDetectionResults(models.Model):
     result = models.CharField(max_length=255, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
     points = models.CharField(max_length=1000, blank=True, null=True)
+
+    description_arabic = models.TextField(blank=True, null=True)
+    points_arabic = models.CharField(max_length=1000, blank=True, null=True)
     patient = models.ForeignKey(PatientProfile, on_delete = models.CASCADE, related_name = 'patient_detections')
 

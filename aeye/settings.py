@@ -124,24 +124,24 @@ WSGI_APPLICATION = 'aeye.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 # SQLite 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
-# # For Postgres on railway For Me
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',
-        'USER': 'postgres',
-        'PASSWORD': 'hLPbIuqYPOmFXDGzLBUFNDtHFernCgTk',
-        'HOST': 'viaduct.proxy.rlwy.net',
-        'PORT': '14026',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# # For Postgres on railway For Me
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'railway',
+#         'USER': 'postgres',
+#         'PASSWORD': 'hLPbIuqYPOmFXDGzLBUFNDtHFernCgTk',
+#         'HOST': 'viaduct.proxy.rlwy.net',
+#         'PORT': '14026',
+#     }
+# }
 
 
 
